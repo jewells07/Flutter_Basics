@@ -1,4 +1,4 @@
-package com.example.ninja_id
+package com.example.quotes
 
 import io.flutter.embedding.android.FlutterActivity
 
