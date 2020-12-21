@@ -7,6 +7,7 @@ class WorldTime {
   String time; // the time in that location
   String flag; // url to an asset flag icon
   String url; // location url for api endpoint
+  bool isDaytime; // true or false if daytime or not
 
   WorldTime({this.location, this.flag, this.url});
 
@@ -25,16 +26,12 @@ class WorldTime {
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
 
-      print(now);
-
       // set the time property
-      time = now.toString();
+      isDaytime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     } catch (e) {
-      print('Caught Error $e');
-      time = 'Could not get time data';
+      print(e);
+      time = 'could not get time';
     }
   }
 }
-
-// WorldTime instance = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/Berlin');
